@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Masalesa_Prac4
+namespace Prac1._6_MakingDecisions_45312222
 {
     internal static class Program
     {

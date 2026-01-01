@@ -8,76 +8,78 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Masalesa_Prac4
+namespace Prac1._6_MakingDecisions_45312222
 {
     public partial class Form1 : Form
     {
-        // Named constant for daily rate
-        private const decimal DAILY_RATE = 350m;
-
         public Form1()
         {
             InitializeComponent();
-
-            // Set button texts with access keys
-            btnCalculate.Text = "&Calculate"; // Alt + C
-            btnExit.Text = "E&xit";           // Alt + X
-
-            // Wire up button events
-            btnCalculate.Click += btnCalculate_Click;
-            btnExit.Click += btnExit_Click;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            lblTotalCost.Visible = false;
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             try
             {
-                int days = int.Parse(txtDays.Text);
-                decimal totalCost = DAILY_RATE * days;
+                string firstName = txtFirstName.Text.Trim();
+                string lastName = txtLastName.Text.Trim();
+                string level = "";
 
-                lblTotalCost.Text = "Hi, " + txtName.Text + ", your cost will be " + totalCost.ToString("C");
-                lblTotalCost.Visible = true;
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Please enter a valid number for days.");
-                txtDays.Focus();
-                txtDays.SelectAll();
+                if (rbFirstYear.Checked) level = "1st year";
+                else if (rbSecondYear.Checked) level = "2nd year";
+                else if (rbThirdYear.Checked) level = "3rd year";
+
+                if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(level))
+                {
+                    MessageBox.Show("Please complete all student information.", "Input Error");
+                    return;
+                }
+
+                double totalCost = 0;
+
+                if (chkCSharp.Checked) totalCost += 550.67;
+                if (chkCpp.Checked) totalCost += 530.30;
+                if (chkVB.Checked) totalCost += 480.02;
+                if (chkJava.Checked) totalCost += 756.60;
+                if (chkDatabase.Checked) totalCost += 736.45;
+
+                string message = $"Hello {firstName} {lastName},\n" +
+                                 $"Year of study: {level}\n" +
+                                 $"Total cost of selected modules: R{totalCost:F2}";
+
+                MessageBox.Show(message, "Enrollment Summary");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("An error occurred while calculating the cost.\n" + ex.Message, "Error");
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtName.Clear();
-            txtEmployeeNo.Clear();
-            txtCourtName.Clear();
-            txtDays.Clear();
-
-            // Hide the label again after clearing
-            lblTotalCost.Text = string.Empty;
-            lblTotalCost.Visible = false;
-
-            txtName.Focus();
+            try
+            {
+                txtFirstName.Clear();
+                txtLastName.Clear();
+                rbFirstYear.Checked = false;
+                rbSecondYear.Checked = false;
+                rbThirdYear.Checked = false;
+                chkCSharp.Checked = false;
+                chkCpp.Checked = false;
+                chkVB.Checked = false;
+                chkJava.Checked = false;
+                chkDatabase.Checked = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while clearing the form.\n" + ex.Message, "Error");
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-    }
+    }  
     
 }
