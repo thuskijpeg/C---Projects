@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prac1._6_MakingDecisions_45312222
+namespace _45312222_practical10
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace Prac1._6_MakingDecisions_45312222
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormMain());
         }
     }
 }

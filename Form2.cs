@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _45312222_practical_10
+namespace _45312222_practical10
 {
-    public partial class Form2 : Form
+    public partial class FormPayment : Form
     {
-        public Form2()
+        public FormPayment()
         {
             InitializeComponent();
         }
