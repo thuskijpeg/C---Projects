@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _45312222_practical_10
+namespace Masalesa_Prac4
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace _45312222_practical_10
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new Form1());
         }
     }
 }
